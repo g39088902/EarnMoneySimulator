@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">赚钱模拟器</string>
+
+    <!--wellet-->
+    <string name="crypto">加密货币</string>
+    <string name="electricity">电力</string>
+    <string name="fossil">化石燃料</string>
+    <string name="precious_metal">贵金属</string>
+    <string name="basic_metal">基本金属</string>
+    <string name="light_metal">轻金属</string>
+
+    <!--action-->
+    <string name="build_aircraft_carrier">造航母</string>
+    <string name="build_rocket">造火箭</string>
+    <string name="build_dyson_sphere">造戴森球</string>
+    <string name="power_generate">发电</string>
+</resources>

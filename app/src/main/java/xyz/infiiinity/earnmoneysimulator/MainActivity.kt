@@ -13,27 +13,32 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.tencent.mmkv.MMKV
+import xyz.infiiinity.earnmoneysimulator.Wallet.loadMMKV
+import xyz.infiiinity.earnmoneysimulator.Wallet.powerGenerate
+import xyz.infiiinity.earnmoneysimulator.Wallet.saveMMKV
 import xyz.infiiinity.earnmoneysimulator.ui.theme.EarnMoneySimulatorTheme
-import xyz.infiiinity.earnmoneysimulator.Wellet.getCrypto
-import xyz.infiiinity.earnmoneysimulator.Wellet.startMine
+import xyz.infiiinity.earnmoneysimulator.Wallet.startMine
 
 class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        MMKV.initialize(this)
         setContent {
             EarnMoneySimulatorTheme {
-                // A surface container using the 'background' color from the theme
                 Surface(color = MaterialTheme.colors.background) {
                     Header()
                 }
             }
         }
-        getCrypto()
+        loadMMKV()
         startMine()
     }
+
 }
 
 @Composable
@@ -46,25 +51,29 @@ fun Header() {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-            if(Wellet.crypto.value>0) Text(
+            if(Wallet.crypto.value>0) Text(
                 modifier = Modifier.padding(8.dp),
-                text = "加密货币 ${Wellet.crypto.value}"
+                text = stringResource(R.string.crypto)+"${Wallet.crypto.value}"
             )
-            if(Wellet.fossil.value>0) Text(
+            if(Wallet.electricity.value>0) Text(
                 modifier = Modifier.padding(8.dp),
-                text = "化石燃料 ${Wellet.fossil.value}"
+                text = stringResource(R.string.electricity)+"${Wallet.electricity.value}"
             )
-            if(Wellet.preciousMetal.value>0) Text(
+            if(Wallet.fossil.value>0) Text(
                 modifier = Modifier.padding(8.dp),
-                text = "贵金属 ${Wellet.preciousMetal.value}"
+                text = stringResource(R.string.fossil)+"${Wallet.fossil.value}"
             )
-            if(Wellet.basicMetal.value>0) Text(
+            if(Wallet.preciousMetal.value>0) Text(
                 modifier = Modifier.padding(8.dp),
-                text = "基本金属 ${Wellet.basicMetal.value}"
+                text = stringResource(R.string.precious_metal)+"${Wallet.preciousMetal.value}"
             )
-            if(Wellet.lightMetal.value>0) Text(
+            if(Wallet.basicMetal.value>0) Text(
                 modifier = Modifier.padding(8.dp),
-                text = "轻金属 ${Wellet.lightMetal.value}"
+                text = stringResource(R.string.basic_metal)+"${Wallet.basicMetal.value}"
+            )
+            if(Wallet.lightMetal.value>0) Text(
+                modifier = Modifier.padding(8.dp),
+                text = stringResource(R.string.light_metal)+"${Wallet.lightMetal.value}"
             )
         }
         Column(
@@ -77,21 +86,28 @@ fun Header() {
         ) {
             Button(
                 modifier = Modifier.padding(8.dp),
-                onClick = { Wellet.basicMetal.value -= 10 },
-                content = { Text("造航母") }
+                onClick = { Wallet.basicMetal.value -= 10 },
+                content = { Text(stringResource(R.string.build_aircraft_carrier)) }
             )
             Button(
                 modifier = Modifier.padding(8.dp),
-                onClick = { Wellet.lightMetal.value -= 30 },
-                content = { Text("造火箭") }
+                onClick = { Wallet.lightMetal.value -= 30 },
+                content = { Text(stringResource(R.string.build_rocket)) }
             )
             Button(
                 modifier = Modifier.padding(8.dp),
                 onClick = {
-                    Wellet.basicMetal.value -= 100
-                    Wellet.preciousMetal.value -= 20
+                    Wallet.basicMetal.value -= 100
+                    Wallet.preciousMetal.value -= 20
                 },
-                content = { Text("造戴森球") }
+                content = { Text(stringResource(R.string.build_dyson_sphere)) }
+            )
+            Button(
+                modifier = Modifier.padding(8.dp),
+                onClick = {
+                    powerGenerate()
+                },
+                content = { Text(stringResource(R.string.power_generate)) }
             )
         }
     }
