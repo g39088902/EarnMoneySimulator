@@ -40,51 +40,56 @@ class MainActivity : ComponentActivity() {
 fun Header() {
     Row {
         Column(
-            modifier = Modifier.fillMaxWidth(0.33f).fillMaxHeight(),
+            modifier = Modifier
+                .fillMaxWidth(0.33f)
+                .fillMaxHeight(),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-            Text(
+            if(Wellet.crypto.value>0) Text(
                 modifier = Modifier.padding(8.dp),
                 text = "加密货币 ${Wellet.crypto.value}"
             )
-            Text(
+            if(Wellet.fossil.value>0) Text(
                 modifier = Modifier.padding(8.dp),
                 text = "化石燃料 ${Wellet.fossil.value}"
             )
-            Text(
+            if(Wellet.preciousMetal.value>0) Text(
                 modifier = Modifier.padding(8.dp),
                 text = "贵金属 ${Wellet.preciousMetal.value}"
             )
-            Text(
+            if(Wellet.basicMetal.value>0) Text(
                 modifier = Modifier.padding(8.dp),
                 text = "基本金属 ${Wellet.basicMetal.value}"
             )
-            Text(
+            if(Wellet.lightMetal.value>0) Text(
                 modifier = Modifier.padding(8.dp),
                 text = "轻金属 ${Wellet.lightMetal.value}"
             )
         }
         Column(
-            modifier = Modifier.fillMaxWidth(1f).fillMaxHeight().background(Color.LightGray),
+            modifier = Modifier
+                .fillMaxWidth(1f)
+                .fillMaxHeight()
+                .background(Color.LightGray),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center,
         ) {
             Button(
                 modifier = Modifier.padding(8.dp),
-                onClick = { Wellet.basicMetal.value -= 50 },
+                onClick = { Wellet.basicMetal.value -= 10 },
                 content = { Text("造航母") }
             )
             Button(
                 modifier = Modifier.padding(8.dp),
-                onClick = { Wellet.lightMetal.value -= 100 },
+                onClick = { Wellet.lightMetal.value -= 30 },
                 content = { Text("造火箭") }
             )
             Button(
                 modifier = Modifier.padding(8.dp),
                 onClick = {
-                    Wellet.basicMetal.value -= 1000
-                    Wellet.preciousMetal.value -= 200
+                    Wellet.basicMetal.value -= 100
+                    Wellet.preciousMetal.value -= 20
                 },
                 content = { Text("造戴森球") }
             )
