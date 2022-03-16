@@ -17,11 +17,10 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.tencent.mmkv.MMKV
-import xyz.infiiinity.earnmoneysimulator.Wallet.loadMMKV
-import xyz.infiiinity.earnmoneysimulator.Wallet.powerGenerate
-import xyz.infiiinity.earnmoneysimulator.Wallet.saveMMKV
+import xyz.infiiinity.earnmoneysimulator.OkHttp.startWaifuSocket
+import xyz.infiiinity.earnmoneysimulator.PowerStation.buildPowerStation
+import xyz.infiiinity.earnmoneysimulator.PowerStation.destoryPowerStation
 import xyz.infiiinity.earnmoneysimulator.ui.theme.EarnMoneySimulatorTheme
-import xyz.infiiinity.earnmoneysimulator.Wallet.startMine
 
 class MainActivity : ComponentActivity() {
 
@@ -35,10 +34,12 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
-        loadMMKV()
-        startMine()
+        Wallet.loadWallet()
+        Wallet.startMine()
+        PowerStation.loadPowerStation()
+        PowerStation.powerGenerate()
+        startWaifuSocket()
     }
-
 }
 
 @Composable
@@ -75,6 +76,10 @@ fun Header() {
                 modifier = Modifier.padding(8.dp),
                 text = stringResource(R.string.light_metal)+"${Wallet.lightMetal.value}"
             )
+            if(PowerStation.powerStation.value>0) Text(
+                modifier = Modifier.padding(8.dp),
+                text = stringResource(R.string.power_station)+"${PowerStation.powerStation.value}"
+            )
         }
         Column(
             modifier = Modifier
@@ -105,9 +110,16 @@ fun Header() {
             Button(
                 modifier = Modifier.padding(8.dp),
                 onClick = {
-                    powerGenerate()
+                    buildPowerStation()
                 },
-                content = { Text(stringResource(R.string.power_generate)) }
+                content = { Text(stringResource(R.string.build_power_station)) }
+            )
+            Button(
+                modifier = Modifier.padding(8.dp),
+                onClick = {
+                    destoryPowerStation()
+                },
+                content = { Text(stringResource(R.string.destory_power_station)) }
             )
         }
     }

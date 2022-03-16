@@ -3,15 +3,22 @@
 
     <!--wallet-->
     <string name="crypto">crypto</string>
-    <string name="electricity">electricity</string>
     <string name="fossil">fossil</string>
     <string name="precious_metal">precious metal</string>
     <string name="basic_metal">basic metal</string>
     <string name="light_metal">light metal</string>
 
+    <!--powerStation-->
+    <string name="power_station">power station</string>
+    <string name="electricity">electricity</string>
+
     <!--action-->
     <string name="build_aircraft_carrier">build aircraft carrier</string>
     <string name="build_rocket">build rocket</string>
     <string name="build_dyson_sphere">build dyson sphere</string>
-    <string name="power_generate">power generate</string>
+    <string name="build_power_station">build power station</string>
+    <string name="destory_power_station">destory power station</string>
+
+    <!--error-->
+    <string name="no_item">you have not this item</string>
 </resources>

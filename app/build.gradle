@@ -61,4 +61,7 @@ dependencies {
 
     // MMKV
     implementation 'com.tencent:mmkv:1.2.12'
+
+    // OkHttp
+    implementation "com.squareup.okhttp3:okhttp:5.0.0-alpha.2"
 }

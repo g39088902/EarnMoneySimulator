@@ -6,11 +6,11 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import xyz.infiiinity.earnmoneysimulator.Time.timeUnit
 
 object Wallet {
 
-    lateinit var kv:MMKV
-
+    val kv = MMKV.defaultMMKV()
     val crypto = mutableStateOf(0)
     val electricity = mutableStateOf(0)
     val fossil = mutableStateOf(0)
@@ -18,17 +18,16 @@ object Wallet {
     val basicMetal = mutableStateOf(0)
     val lightMetal = mutableStateOf(0)
 
-    fun loadMMKV(){
-        kv = MMKV.defaultMMKV()
-        crypto.value = kv.decodeInt("crypto")
-        electricity.value = kv.decodeInt("electricity")
-        fossil.value = kv.decodeInt("fossil")
-        preciousMetal.value = kv.decodeInt("preciousMetal")
-        basicMetal.value = kv.decodeInt("basicMetal")
-        lightMetal.value = kv.decodeInt("lightMetal")
+    fun loadWallet(){
+        crypto.value = kv.decodeInt("crypto",0)
+        electricity.value = kv.decodeInt("electricity",0)
+        fossil.value = kv.decodeInt("fossil",0)
+        preciousMetal.value = kv.decodeInt("preciousMetal",0)
+        basicMetal.value = kv.decodeInt("basicMetal",0)
+        lightMetal.value = kv.decodeInt("lightMetal",0)
     }
 
-    fun saveMMKV(){
+    fun saveWallet(){
         kv.encode("crypto",crypto.value)
         kv.encode("electricity",electricity.value)
         kv.encode("fossil",fossil.value)
@@ -40,20 +39,15 @@ object Wallet {
     fun startMine() {
         CoroutineScope(Dispatchers.Default).launch {
             while (true) {
-                delay(1000)
+                delay(timeUnit)
                 when ((0..3).random()) {
                     0 -> fossil.value++
                     1 -> preciousMetal.value++
                     2 -> basicMetal.value++
                     3 -> lightMetal.value++
                 }
-                saveMMKV()
+                saveWallet()
             }
         }
-    }
-
-    fun powerGenerate(){
-        fossil.value -= 100
-        electricity.value += 100
     }
 }
