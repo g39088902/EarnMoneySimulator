@@ -19,7 +19,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.tencent.mmkv.MMKV
-import xyz.infiiinity.earnmoneysimulator.OkHttp.startWaifuSocket
 import xyz.infiiinity.earnmoneysimulator.OkHttp.waifuBitmap
 import xyz.infiiinity.earnmoneysimulator.PowerStation.buildPowerStation
 import xyz.infiiinity.earnmoneysimulator.PowerStation.destoryPowerStation
@@ -41,7 +40,6 @@ class MainActivity : ComponentActivity() {
         Wallet.startMine()
         PowerStation.loadPowerStation()
         PowerStation.powerGenerate()
-        startWaifuSocket()
     }
 }
 

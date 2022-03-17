@@ -1,7 +1,7 @@
 package xyz.infiiinity.earnmoneysimulator
 
 object Fson {
-    fun getImages(payload:String):List<String>{
+    fun getImagesFromJson(payload:String):List<String>{
         val regex = Regex("(?<=\"image\":\").*?(?=\",\"seeds\")")
         val regexResult = regex.findAll(payload)
         val result = mutableListOf<String>()
@@ -9,5 +9,10 @@ object Fson {
             result.add(item.value)
         }
         return result
+    }
+
+    fun getTokenFromHtml(payload: String):String{
+        val regex = Regex("(?<=window.authToken = \").*?(?=\")")
+        return regex.find(payload)?.value ?: ""
     }
 }
