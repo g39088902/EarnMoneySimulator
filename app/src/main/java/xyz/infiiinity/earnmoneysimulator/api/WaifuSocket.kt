@@ -1,4 +1,4 @@
-package xyz.infiiinity.earnmoneysimulator
+package xyz.infiiinity.earnmoneysimulator.api
 
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -7,16 +7,14 @@ import android.util.Base64
 import android.util.Log
 import kotlinx.coroutines.*
 import okhttp3.*
-import xyz.infiiinity.earnmoneysimulator.Fson.getImagesFromJson
-import xyz.infiiinity.earnmoneysimulator.Fson.getTokenFromHtml
+import xyz.infiiinity.earnmoneysimulator.utils.Fson.getImagesFromJson
+import xyz.infiiinity.earnmoneysimulator.utils.Fson.getTokenFromHtml
+import xyz.infiiinity.earnmoneysimulator.utils.Http.okHttpClient
+import xyz.infiiinity.earnmoneysimulator.utils.Time
 import java.util.*
-import java.util.concurrent.TimeUnit
 
-object OkHttp {
+object WaifuSocket {
 
-    private val okHttpClient = OkHttpClient.Builder()
-        .pingInterval(10, TimeUnit.SECONDS)
-        .build()
     val waifuDeque = ArrayDeque<String>(0)
     val waifuBitmap = Bitmap.createBitmap(300,300,Bitmap.Config.ARGB_8888)
 

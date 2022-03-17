@@ -1,4 +1,4 @@
-package xyz.infiiinity.earnmoneysimulator
+package xyz.infiiinity.earnmoneysimulator.utils
 
 import android.widget.Toast
 import xyz.infiiinity.earnmoneysimulator.CommonApplication.Companion.context

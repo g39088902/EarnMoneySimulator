@@ -1,4 +1,4 @@
-package xyz.infiiinity.earnmoneysimulator
+package xyz.infiiinity.earnmoneysimulator.utils
 
 object Fson {
     fun getImagesFromJson(payload:String):List<String>{

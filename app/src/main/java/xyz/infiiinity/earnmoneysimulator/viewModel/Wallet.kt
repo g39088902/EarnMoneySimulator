@@ -1,4 +1,4 @@
-package xyz.infiiinity.earnmoneysimulator
+package xyz.infiiinity.earnmoneysimulator.viewModel
 
 import androidx.compose.runtime.mutableStateOf
 import com.tencent.mmkv.MMKV
@@ -6,7 +6,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import xyz.infiiinity.earnmoneysimulator.Time.timeUnit
+import xyz.infiiinity.earnmoneysimulator.utils.Time.timeUnit
 
 object Wallet {
     val name = javaClass.simpleName
