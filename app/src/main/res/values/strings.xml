@@ -1,16 +1,16 @@
 <resources>
     <string name="app_name">EarnMoneySimulator</string>
 
-    <!--wallet-->
-    <string name="crypto">crypto</string>
-    <string name="fossil">fossil</string>
-    <string name="precious_metal">precious metal</string>
-    <string name="basic_metal">basic metal</string>
-    <string name="light_metal">light metal</string>
+    <string-array name="wallet">
+        <item>crypto</item>
+        <item>electricity</item>
+        <item>fossil</item>
+        <item>precious</item>
+        <item>basic metal</item>
+        <item>light metal</item>
+    </string-array>
 
-    <!--powerStation-->
     <string name="power_station">power station</string>
-    <string name="electricity">electricity</string>
 
     <!--action-->
     <string name="build_aircraft_carrier">build aircraft carrier</string>

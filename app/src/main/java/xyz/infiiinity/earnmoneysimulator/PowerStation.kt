@@ -9,9 +9,6 @@ import kotlinx.coroutines.launch
 import xyz.infiiinity.earnmoneysimulator.CommonApplication.Companion.context
 import xyz.infiiinity.earnmoneysimulator.Time.timeUnit
 import xyz.infiiinity.earnmoneysimulator.Tips.toast
-import xyz.infiiinity.earnmoneysimulator.Wallet.basicMetal
-import xyz.infiiinity.earnmoneysimulator.Wallet.electricity
-import xyz.infiiinity.earnmoneysimulator.Wallet.fossil
 import java.lang.Integer.max
 import java.lang.Integer.min
 
@@ -20,29 +17,22 @@ object PowerStation {
     val kv: MMKV = MMKV.defaultMMKV()
     val powerStation = mutableStateOf(0)
 
-    fun loadPowerStation(){
+    fun load(){
         powerStation.value = kv.decodeInt("powerStation",0)
-    }
-
-    fun savePowerStation(){
-        kv.encode("powerStation",powerStation.value)
-    }
-
-    fun powerGenerate(){
         CoroutineScope(Dispatchers.Default).launch {
             while (true) {
                 val generateAbility = 1 * powerStation.value
-                val generateActual = min(generateAbility, max(fossil.value, 0))
-                fossil.value -= generateActual
-                electricity.value += generateActual
-                savePowerStation()
-                delay(timeUnit)
+                val generateActual = min(generateAbility, max(Wallet.values[2].value, 0))
+                Wallet.values[2].value -= generateActual
+                Wallet.values[3].value += generateActual
+                kv.encode("powerStation",powerStation.value)
+                delay(timeUnit*5)
             }
         }
     }
 
     fun buildPowerStation(){
-        basicMetal.value -= 100
+        Wallet.values[4].value -= 100
         powerStation.value++
     }
 

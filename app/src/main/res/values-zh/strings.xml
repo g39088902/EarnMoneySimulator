@@ -1,16 +1,16 @@
 <resources>
     <string name="app_name">赚钱模拟器</string>
 
-    <!--wellet-->
-    <string name="crypto">加密货币</string>
-    <string name="fossil">化石燃料</string>
-    <string name="precious_metal">贵金属</string>
-    <string name="basic_metal">基本金属</string>
-    <string name="light_metal">轻金属</string>
+    <string-array name="wallet">
+        <item>加密货币</item>
+        <item>电力</item>
+        <item>化石燃料</item>
+        <item>贵金属</item>
+        <item>基本金属</item>
+        <item>轻金属</item>
+    </string-array>
 
-    <!--powerStation-->
     <string name="power_station">发电站</string>
-    <string name="electricity">电力</string>
 
     <!--action-->
     <string name="build_aircraft_carrier">造航母</string>

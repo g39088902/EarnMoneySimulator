@@ -9,44 +9,18 @@ import kotlinx.coroutines.launch
 import xyz.infiiinity.earnmoneysimulator.Time.timeUnit
 
 object Wallet {
-
+    val name = javaClass.simpleName
     val kv = MMKV.defaultMMKV()
-    val crypto = mutableStateOf(0)
-    val electricity = mutableStateOf(0)
-    val fossil = mutableStateOf(0)
-    val preciousMetal = mutableStateOf(0)
-    val basicMetal = mutableStateOf(0)
-    val lightMetal = mutableStateOf(0)
+    val count = 6
+    val values = List(count) { mutableStateOf(0) }
 
-    fun loadWallet(){
-        crypto.value = kv.decodeInt("crypto",0)
-        electricity.value = kv.decodeInt("electricity",0)
-        fossil.value = kv.decodeInt("fossil",0)
-        preciousMetal.value = kv.decodeInt("preciousMetal",0)
-        basicMetal.value = kv.decodeInt("basicMetal",0)
-        lightMetal.value = kv.decodeInt("lightMetal",0)
-    }
-
-    fun saveWallet(){
-        kv.encode("crypto",crypto.value)
-        kv.encode("electricity",electricity.value)
-        kv.encode("fossil",fossil.value)
-        kv.encode("preciousMetal",preciousMetal.value)
-        kv.encode("basicMetal",basicMetal.value)
-        kv.encode("lightMetal",lightMetal.value)
-    }
-
-    fun startMine() {
+    fun load(){
+        for(i in 0 until count) values[i].value = kv.decodeInt("$name$i",0)
         CoroutineScope(Dispatchers.Default).launch {
             while (true) {
                 delay(timeUnit)
-                when ((0..3).random()) {
-                    0 -> fossil.value++
-                    1 -> preciousMetal.value++
-                    2 -> basicMetal.value++
-                    3 -> lightMetal.value++
-                }
-                saveWallet()
+                values[(0 until count).random()].value++
+                for(i in 0 until count) kv.encode("$name$i", values[i].value)
             }
         }
     }

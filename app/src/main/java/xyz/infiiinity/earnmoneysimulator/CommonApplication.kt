@@ -7,9 +7,7 @@ import kotlin.properties.Delegates
 
 class CommonApplication: Application(){
     companion object {
-        private val TAG = "CommonApplication"
         var context: Context by Delegates.notNull()
-        private set
         fun stringRes(id:Int) = context.resources.getString(id)
         fun stringRes(id:Int,index:Int) = context.resources.getStringArray(id)[index]
     }

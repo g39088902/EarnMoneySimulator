@@ -37,12 +37,9 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
-        Wallet.loadWallet()
-        Wallet.startMine()
-        Skill.loadSkill()
-        Skill.startStudy()
-        PowerStation.loadPowerStation()
-        PowerStation.powerGenerate()
+        Wallet.load()
+        Skill.load()
+        PowerStation.load()
     }
 }
 
@@ -56,39 +53,25 @@ fun Header() {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-            if(Wallet.crypto.value>0) Text(
-                modifier = Modifier.padding(8.dp),
-                text = stringResource(R.string.crypto)+"${Wallet.crypto.value}"
-            )
-            if(Wallet.electricity.value>0) Text(
-                modifier = Modifier.padding(8.dp),
-                text = stringResource(R.string.electricity)+"${Wallet.electricity.value}"
-            )
-            if(Wallet.fossil.value>0) Text(
-                modifier = Modifier.padding(8.dp),
-                text = stringResource(R.string.fossil)+"${Wallet.fossil.value}"
-            )
-            if(Wallet.preciousMetal.value>0) Text(
-                modifier = Modifier.padding(8.dp),
-                text = stringResource(R.string.precious_metal)+"${Wallet.preciousMetal.value}"
-            )
-            if(Wallet.basicMetal.value>0) Text(
-                modifier = Modifier.padding(8.dp),
-                text = stringResource(R.string.basic_metal)+"${Wallet.basicMetal.value}"
-            )
-            if(Wallet.lightMetal.value>0) Text(
-                modifier = Modifier.padding(8.dp),
-                text = stringResource(R.string.light_metal)+"${Wallet.lightMetal.value}"
-            )
+            with(Wallet){
+                for (i in 0 until count){
+                    if(values[i].value>0) Text(
+                        modifier = Modifier.padding(8.dp),
+                        text = stringRes(R.array.wallet, i) +"${values[i].value}"
+                    )
+                }
+            }
             if(PowerStation.powerStation.value>0) Text(
                 modifier = Modifier.padding(8.dp),
                 text = stringResource(R.string.power_station)+"${PowerStation.powerStation.value}"
             )
-            for (i in 0 until Skill.count){
-                if(Skill.values[i].value>0) Text(
-                    modifier = Modifier.padding(8.dp),
-                    text = stringRes(R.array.skill, i) +"${Skill.values[i].value}"
-                )
+            with(Skill) {
+                for (i in 0 until count) {
+                    if (values[i].value > 0) Text(
+                        modifier = Modifier.padding(8.dp),
+                        text = stringRes(R.array.skill, i) + "${values[i].value}"
+                    )
+                }
             }
         }
         Column(
@@ -105,19 +88,19 @@ fun Header() {
             )
             Button(
                 modifier = Modifier.padding(8.dp),
-                onClick = { Wallet.basicMetal.value -= 10 },
+                onClick = { Wallet.values[4].value -= 10 },
                 content = { Text(stringResource(R.string.build_aircraft_carrier)) }
             )
             Button(
                 modifier = Modifier.padding(8.dp),
-                onClick = { Wallet.lightMetal.value -= 30 },
+                onClick = { Wallet.values[5].value -= 30 },
                 content = { Text(stringResource(R.string.build_rocket)) }
             )
             Button(
                 modifier = Modifier.padding(8.dp),
                 onClick = {
-                    Wallet.basicMetal.value -= 100
-                    Wallet.preciousMetal.value -= 20
+                    Wallet.values[4].value -= 100
+                    Wallet.values[3].value -= 20
                 },
                 content = { Text(stringResource(R.string.build_dyson_sphere)) }
             )
