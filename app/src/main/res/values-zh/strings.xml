@@ -19,6 +19,15 @@
     <string name="build_power_station">造发电站</string>
     <string name="destory_power_station">关闭发电站</string>
 
+    <string-array name="skill">
+        <item>符号学</item>
+        <item>政治学</item>
+        <item>理工学</item>
+        <item>经济学</item>
+        <item>艺术学</item>
+        <item>人物形象</item>
+    </string-array>
+
     <!--error-->
     <string name="no_item">你没有这种物品</string>
 </resources>

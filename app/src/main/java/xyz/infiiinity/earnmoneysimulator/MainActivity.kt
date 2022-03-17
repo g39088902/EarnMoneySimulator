@@ -19,6 +19,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.tencent.mmkv.MMKV
+import xyz.infiiinity.earnmoneysimulator.CommonApplication.Companion.stringRes
 import xyz.infiiinity.earnmoneysimulator.OkHttp.waifuBitmap
 import xyz.infiiinity.earnmoneysimulator.PowerStation.buildPowerStation
 import xyz.infiiinity.earnmoneysimulator.PowerStation.destoryPowerStation
@@ -38,6 +39,8 @@ class MainActivity : ComponentActivity() {
         }
         Wallet.loadWallet()
         Wallet.startMine()
+        Skill.loadSkill()
+        Skill.startStudy()
         PowerStation.loadPowerStation()
         PowerStation.powerGenerate()
     }
@@ -81,6 +84,12 @@ fun Header() {
                 modifier = Modifier.padding(8.dp),
                 text = stringResource(R.string.power_station)+"${PowerStation.powerStation.value}"
             )
+            for (i in 0 until Skill.count){
+                if(Skill.values[i].value>0) Text(
+                    modifier = Modifier.padding(8.dp),
+                    text = stringRes(R.array.skill, i) +"${Skill.values[i].value}"
+                )
+            }
         }
         Column(
             modifier = Modifier
