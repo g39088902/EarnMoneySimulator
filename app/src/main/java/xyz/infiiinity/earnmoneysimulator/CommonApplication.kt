@@ -3,6 +3,9 @@ package xyz.infiiinity.earnmoneysimulator
 import android.app.Application
 import android.content.Context
 import com.tencent.mmkv.MMKV
+import xyz.infiiinity.earnmoneysimulator.viewModel.PowerStation
+import xyz.infiiinity.earnmoneysimulator.viewModel.Skill
+import xyz.infiiinity.earnmoneysimulator.viewModel.Wallet
 import kotlin.properties.Delegates
 
 class CommonApplication: Application(){
@@ -20,5 +23,8 @@ class CommonApplication: Application(){
     override fun onCreate() {
         super.onCreate()
         context = this
+        Wallet.load()
+        Skill.load()
+        PowerStation.load()
     }
 }

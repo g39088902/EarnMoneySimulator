@@ -14,19 +14,19 @@ import java.lang.Integer.max
 import java.lang.Integer.min
 
 object PowerStation {
-
+    val name = javaClass.simpleName
     val kv: MMKV = MMKV.defaultMMKV()
     val powerStation = mutableStateOf(0)
 
     fun load(){
-        powerStation.value = kv.decodeInt("powerStation",0)
+        powerStation.value = kv.decodeInt(name,0)
         CoroutineScope(Dispatchers.Default).launch {
             while (true) {
                 val generateAbility = 1 * powerStation.value
                 val generateActual = min(generateAbility, max(Wallet.values[2].value, 0))
                 Wallet.values[2].value -= generateActual
                 Wallet.values[3].value += generateActual
-                kv.encode("powerStation", powerStation.value)
+                kv.encode(name, powerStation.value)
                 delay(timeUnit*5)
             }
         }

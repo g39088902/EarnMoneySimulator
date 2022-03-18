@@ -12,7 +12,8 @@ object Wallet {
     val name = javaClass.simpleName
     val kv = MMKV.defaultMMKV()
     val lastIndex = 5
-    val values = List(lastIndex) { mutableStateOf(0) }
+    val count = lastIndex +1
+    val values = List(count) { mutableStateOf(0) }
 
     fun load(){
         for(i in 0 .. lastIndex) values[i].value = kv.decodeInt("$name$i",0)

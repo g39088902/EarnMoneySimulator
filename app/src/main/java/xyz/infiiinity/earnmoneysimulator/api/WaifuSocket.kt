@@ -17,28 +17,18 @@ object WaifuSocket {
 
     val waifuDeque = ArrayDeque<String>(0)
     val waifuBitmap = Bitmap.createBitmap(300,300,Bitmap.Config.ARGB_8888)
-
     val waifuListener = object : WebSocketListener(){
-        override fun onOpen(webSocket: WebSocket, response: Response) {
-            super.onOpen(webSocket, response)
-            Log.i("Waifu",response.message)
-        }
         override fun onMessage(webSocket: WebSocket, text: String) {
             super.onMessage(webSocket, text)
             Log.i("Waifu",text)
             val picList = getImagesFromJson(text)
             waifuDeque.addAll(picList)
         }
-
-        override fun onFailure(webSocket: WebSocket, t: Throwable, response: Response?) {
-            super.onFailure(webSocket, t, response)
-            Log.i("Waifu",response?.message ?: "")
-        }
     }
     lateinit var waifuSocket:WebSocket
 
     init {
-        CoroutineScope(Dispatchers.Default).launch {
+        CoroutineScope(Dispatchers.IO).launch {
             val tokenUrl = "https://waifulabs.com/generate"
             val tokenRequest = Request.Builder().url(tokenUrl).build()
             val tokenResponse = okHttpClient.newCall(tokenRequest).execute().body

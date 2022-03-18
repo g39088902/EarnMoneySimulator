@@ -38,9 +38,6 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
-        Wallet.load()
-        Skill.load()
-        PowerStation.load()
     }
 }
 
@@ -74,7 +71,7 @@ fun Main() {
         }
         Column(
             modifier = Modifier
-                .fillMaxSize()
+                .fillMaxSize(),
         ) {
             val pagerState = rememberPagerState()
             HorizontalPager(
@@ -82,7 +79,7 @@ fun Main() {
                 state = pagerState,
                 modifier = Modifier
                     .fillMaxWidth(1f)
-                    .fillMaxHeight(0.9f)
+                    .fillMaxHeight(0.96f)
                     .background(Color.LightGray),
             ) { index ->
                 when (index) {
@@ -91,12 +88,16 @@ fun Main() {
                     2 -> MainPageStudy()
                 }
             }
-            HorizontalPagerIndicator(
-                pagerState = pagerState,
+            Row(
                 modifier = Modifier
-                .align(Alignment.CenterHorizontally)
-                .padding(16.dp),
-            )
+                .fillMaxSize()
+                .background(Color.LightGray),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.Center
+            ) {
+                HorizontalPagerIndicator( pagerState = pagerState )
+            }
+
         }
     }
 }
