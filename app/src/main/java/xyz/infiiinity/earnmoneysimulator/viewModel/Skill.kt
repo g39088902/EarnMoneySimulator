@@ -11,16 +11,16 @@ import xyz.infiiinity.earnmoneysimulator.utils.Time.timeUnit
 object Skill {
     val name = javaClass.simpleName
     val kv = MMKV.defaultMMKV()
-    val count = 6
-    val values = List(count) { mutableStateOf(0) }
+    val lastIndex = 6
+    val values = List(lastIndex) { mutableStateOf(0) }
 
     fun load(){
-        for(i in 0 until count) values[i].value = kv.decodeInt("$name$i",0)
+        for(i in 0 .. lastIndex) values[i].value = kv.decodeInt("$name$i",0)
         CoroutineScope(Dispatchers.Default).launch {
             while (true) {
                 delay(timeUnit)
-                values[(0 until count).random()].value++
-                for(i in 0 until count) kv.encode("$name$i", values[i].value)
+                values[(0 .. lastIndex).random()].value++
+                for(i in 0 .. lastIndex) kv.encode("$name$i", values[i].value)
             }
         }
     }

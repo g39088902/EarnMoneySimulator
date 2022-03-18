@@ -56,24 +56,20 @@ fun Main() {
             verticalArrangement = Arrangement.Center
         ) {
             with(Wallet) {
-                for (i in 0 until count) {
-                    if (values[i].value > 0) Text(
-                        modifier = Modifier.padding(8.dp),
-                        text = stringRes(R.array.wallet, i) + "${values[i].value}"
-                    )
-                }
+                for (i in 0 .. lastIndex) if (values[i].value > 0) Text(
+                    modifier = Modifier.padding(8.dp),
+                    text = stringRes(R.array.wallet, i) + "${values[i].value}"
+                )
             }
             if (PowerStation.powerStation.value > 0) Text(
                 modifier = Modifier.padding(8.dp),
                 text = stringResource(R.string.power_station) + "${PowerStation.powerStation.value}"
             )
             with(Skill) {
-                for (i in 0 until count) {
-                    if (values[i].value > 0) Text(
-                        modifier = Modifier.padding(8.dp),
-                        text = stringRes(R.array.skill, i) + "${values[i].value}"
-                    )
-                }
+                for (i in 0 .. lastIndex) if (values[i].value > 0) Text(
+                    modifier = Modifier.padding(8.dp),
+                    text = stringRes(R.array.skill, i) + "${values[i].value}"
+                )
             }
         }
         Column(

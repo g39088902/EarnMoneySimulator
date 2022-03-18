@@ -2,12 +2,12 @@
     <string name="app_name">EarnMoneySimulator</string>
 
     <string-array name="wallet">
-        <item>crypto</item>
-        <item>electricity</item>
-        <item>fossil</item>
-        <item>precious</item>
-        <item>basic metal</item>
-        <item>light metal</item>
+        <item>Crypto</item>
+        <item>Electricity</item>
+        <item>Fossil</item>
+        <item>Precious metal</item>
+        <item>Basic metal</item>
+        <item>Light metal</item>
     </string-array>
 
     <string name="power_station">power station</string>
@@ -20,12 +20,12 @@
     <string name="destory_power_station">destory power station</string>
 
     <string-array name="skill">
-        <item>符号学</item>
-        <item>政治学</item>
-        <item>理工学</item>
-        <item>经济学</item>
-        <item>艺术学</item>
-        <item>人物形象</item>
+        <item>Semiotics</item>
+        <item>Politics</item>
+        <item>Technology</item>
+        <item>Economics</item>
+        <item>Art</item>
+        <item>Social Image</item>
     </string-array>
 
     <!--error-->
