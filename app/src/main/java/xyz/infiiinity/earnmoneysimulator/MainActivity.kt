@@ -22,6 +22,7 @@ import com.google.accompanist.pager.rememberPagerState
 import com.tencent.mmkv.MMKV
 import xyz.infiiinity.earnmoneysimulator.CommonApplication.Companion.stringRes
 import xyz.infiiinity.earnmoneysimulator.ui.theme.EarnMoneySimulatorTheme
+import xyz.infiiinity.earnmoneysimulator.utils.Time.timeHook
 import xyz.infiiinity.earnmoneysimulator.viewModel.PowerStation
 import xyz.infiiinity.earnmoneysimulator.viewModel.Skill
 import xyz.infiiinity.earnmoneysimulator.viewModel.Wallet
@@ -38,6 +39,7 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
+        timeHook.start()
     }
 }
 

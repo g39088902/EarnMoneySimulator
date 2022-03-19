@@ -20,16 +20,14 @@ object PowerStation {
 
     fun load(){
         powerStation.value = kv.decodeInt(name,0)
-        CoroutineScope(Dispatchers.Default).launch {
-            while (true) {
-                val generateAbility = 1 * powerStation.value
-                val generateActual = min(generateAbility, max(Wallet.values[2].value, 0))
-                Wallet.values[2].value -= generateActual
-                Wallet.values[3].value += generateActual
-                kv.encode(name, powerStation.value)
-                delay(timeUnit*5)
-            }
-        }
+    }
+
+    suspend fun doEach5Second(){
+        val generateAbility = 1 * powerStation.value
+        val generateActual = min(generateAbility, max(Wallet.values[2].value, 0))
+        Wallet.values[2].value -= generateActual
+        Wallet.values[3].value += generateActual
+        kv.encode(name, powerStation.value)
     }
 
     fun buildPowerStation(){

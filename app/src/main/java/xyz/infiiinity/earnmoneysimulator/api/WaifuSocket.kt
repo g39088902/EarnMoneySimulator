@@ -39,7 +39,7 @@ object WaifuSocket {
             waifuSocket.send("[\"1\",\"1\",\"api\",\"phx_join\",{}]")
             waifuSocket.send("[\"1\",\"1\",\"api\",\"generate\",{\"id\":1,\"params\":{\"step\":0}}]")
             while (true) {
-                delay(Time.timeUnit)
+                delay(Time.timeUnit*10)
                 nextWaifu()
             }
         }
