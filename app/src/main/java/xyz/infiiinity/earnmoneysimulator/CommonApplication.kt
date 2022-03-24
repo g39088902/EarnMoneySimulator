@@ -11,8 +11,6 @@ import kotlin.properties.Delegates
 class CommonApplication: Application(){
     companion object {
         var context: Context by Delegates.notNull()
-        fun stringRes(id:Int) = context.resources.getString(id)
-        fun stringRes(id:Int,index:Int) = context.resources.getStringArray(id)[index]
     }
 
     override fun attachBaseContext(base: Context?) {

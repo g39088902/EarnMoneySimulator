@@ -1,6 +1,11 @@
 <resources>
     <string name="app_name">赚钱模拟器</string>
 
+    <string-array name="plan">
+        <item>学习</item>
+        <item>挖矿</item>
+    </string-array>
+
     <string-array name="wallet">
         <item>加密货币</item>
         <item>电力</item>

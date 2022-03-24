@@ -1,6 +1,11 @@
 <resources>
     <string name="app_name">EarnMoneySimulator</string>
 
+    <string-array name="plan">
+        <item>study</item>
+        <item>mining</item>
+    </string-array>
+
     <string-array name="wallet">
         <item>Crypto</item>
         <item>Electricity</item>

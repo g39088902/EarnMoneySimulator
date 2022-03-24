@@ -20,8 +20,8 @@ import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.HorizontalPagerIndicator
 import com.google.accompanist.pager.rememberPagerState
 import com.tencent.mmkv.MMKV
-import xyz.infiiinity.earnmoneysimulator.CommonApplication.Companion.stringRes
 import xyz.infiiinity.earnmoneysimulator.ui.theme.EarnMoneySimulatorTheme
+import xyz.infiiinity.earnmoneysimulator.utils.Resource.stringRes
 import xyz.infiiinity.earnmoneysimulator.utils.Time.timeHook
 import xyz.infiiinity.earnmoneysimulator.viewModel.PowerStation
 import xyz.infiiinity.earnmoneysimulator.viewModel.Skill
@@ -49,7 +49,7 @@ fun Main() {
     Row {
         Column(
             modifier = Modifier
-                .fillMaxWidth(0.33f)
+                .fillMaxWidth(0.3f)
                 .fillMaxHeight(),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center

@@ -1,6 +1,7 @@
 package xyz.infiiinity.earnmoneysimulator.utils
 
 import kotlinx.coroutines.*
+import xyz.infiiinity.earnmoneysimulator.api.WaifuSocket
 import xyz.infiiinity.earnmoneysimulator.viewModel.PowerStation
 import xyz.infiiinity.earnmoneysimulator.viewModel.Skill
 import xyz.infiiinity.earnmoneysimulator.viewModel.Wallet
@@ -14,6 +15,7 @@ object Time {
             Wallet.doEachSecond()
             Skill.doEachSecond()
             if (i%5==1)PowerStation.doEach5Second()
+            if (i%10==2) WaifuSocket.nextWaifu()
             i++
         }
     }
