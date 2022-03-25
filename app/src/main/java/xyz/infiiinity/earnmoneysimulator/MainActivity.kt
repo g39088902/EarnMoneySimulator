@@ -23,9 +23,9 @@ import com.tencent.mmkv.MMKV
 import xyz.infiiinity.earnmoneysimulator.ui.theme.EarnMoneySimulatorTheme
 import xyz.infiiinity.earnmoneysimulator.utils.Resource.stringRes
 import xyz.infiiinity.earnmoneysimulator.utils.Time.timeHook
-import xyz.infiiinity.earnmoneysimulator.viewModel.PowerStation
-import xyz.infiiinity.earnmoneysimulator.viewModel.Skill
-import xyz.infiiinity.earnmoneysimulator.viewModel.Wallet
+import xyz.infiiinity.earnmoneysimulator.model.PowerStation
+import xyz.infiiinity.earnmoneysimulator.model.Skill
+import xyz.infiiinity.earnmoneysimulator.model.Wallet
 
 class MainActivity : ComponentActivity() {
 

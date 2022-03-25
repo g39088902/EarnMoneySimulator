@@ -10,7 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import xyz.infiiinity.earnmoneysimulator.utils.Resource.stringRes
-import xyz.infiiinity.earnmoneysimulator.viewModel.Plan
+import xyz.infiiinity.earnmoneysimulator.model.Plan
 
 @Composable
 fun MainPageStudy(){

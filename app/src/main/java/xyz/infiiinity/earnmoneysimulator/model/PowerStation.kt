@@ -1,37 +1,35 @@
-package xyz.infiiinity.earnmoneysimulator.viewModel
+package xyz.infiiinity.earnmoneysimulator.model
 
 import androidx.compose.runtime.mutableStateOf
 import com.tencent.mmkv.MMKV
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 import xyz.infiiinity.earnmoneysimulator.CommonApplication.Companion.context
 import xyz.infiiinity.earnmoneysimulator.R
-import xyz.infiiinity.earnmoneysimulator.utils.Time.timeUnit
+import xyz.infiiinity.earnmoneysimulator.model.Wallet.BASIC_METAL
+import xyz.infiiinity.earnmoneysimulator.model.Wallet.ELECTRICITY
+import xyz.infiiinity.earnmoneysimulator.model.Wallet.FOSSIL
+import xyz.infiiinity.earnmoneysimulator.utils.MMKV.kv
 import xyz.infiiinity.earnmoneysimulator.utils.Tips.toast
 import java.lang.Integer.max
 import java.lang.Integer.min
 
 object PowerStation {
     val name = javaClass.simpleName
-    val kv: MMKV = MMKV.defaultMMKV()
     val powerStation = mutableStateOf(0)
 
     fun load(){
         powerStation.value = kv.decodeInt(name,0)
     }
 
-    suspend fun doEach5Second(){
+    fun doEach5Second(){
         val generateAbility = 1 * powerStation.value
         val generateActual = min(generateAbility, max(Wallet.values[2].value, 0))
-        Wallet.values[2].value -= generateActual
-        Wallet.values[3].value += generateActual
+        Wallet.values[FOSSIL].value -= generateActual
+        Wallet.values[ELECTRICITY].value += generateActual
         kv.encode(name, powerStation.value)
     }
 
     fun buildPowerStation(){
-        Wallet.values[4].value -= 100
+        Wallet.values[BASIC_METAL].value -= 100
         powerStation.value++
     }
 

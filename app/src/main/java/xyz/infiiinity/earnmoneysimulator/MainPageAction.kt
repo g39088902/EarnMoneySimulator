@@ -10,8 +10,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import xyz.infiiinity.earnmoneysimulator.viewModel.PowerStation
-import xyz.infiiinity.earnmoneysimulator.viewModel.Wallet
+import xyz.infiiinity.earnmoneysimulator.model.PowerStation
+import xyz.infiiinity.earnmoneysimulator.model.Wallet
 
 @Composable
 fun MainPageAction(){
