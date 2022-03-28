@@ -3,10 +3,7 @@ package xyz.infiiinity.earnmoneysimulator
 import android.app.Application
 import android.content.Context
 import com.tencent.mmkv.MMKV
-import xyz.infiiinity.earnmoneysimulator.model.Plan
-import xyz.infiiinity.earnmoneysimulator.model.PowerStation
-import xyz.infiiinity.earnmoneysimulator.model.Skill
-import xyz.infiiinity.earnmoneysimulator.model.Wallet
+import xyz.infiiinity.earnmoneysimulator.model.*
 import kotlin.properties.Delegates
 
 class CommonApplication: Application(){
@@ -23,8 +20,10 @@ class CommonApplication: Application(){
         super.onCreate()
         context = this
         Wallet.load()
+        RealEstate.load()
+        Plan.load()
         Skill.load()
         PowerStation.load()
-        Plan.load()
+        Agriculture.load()
     }
 }

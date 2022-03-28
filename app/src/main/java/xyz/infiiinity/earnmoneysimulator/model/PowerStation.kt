@@ -20,7 +20,7 @@ object PowerStation {
         powerStation.value = kv.decodeInt(name,0)
     }
 
-    fun doEach5Second(){
+    fun doEachMinute(){
         val generateAbility = 1 * powerStation.value
         val generateActual = min(generateAbility, max(Wallet.values[2].value, 0))
         Wallet.values[FOSSIL].value -= generateActual

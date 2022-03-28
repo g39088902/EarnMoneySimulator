@@ -11,10 +11,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import xyz.infiiinity.earnmoneysimulator.model.PowerStation
+import xyz.infiiinity.earnmoneysimulator.model.RealEstate
+import xyz.infiiinity.earnmoneysimulator.model.RealEstate.AGRICULTURAL_LAND
 import xyz.infiiinity.earnmoneysimulator.model.Wallet
+import xyz.infiiinity.earnmoneysimulator.model.Wallet.CRYPTO
+import xyz.infiiinity.earnmoneysimulator.utils.Resource.stringRes
+import xyz.infiiinity.earnmoneysimulator.utils.Tips
+import xyz.infiiinity.earnmoneysimulator.utils.Tips.toast
 
 @Composable
-fun MainPageAction(){
+fun MainPageAction() {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
@@ -49,7 +55,18 @@ fun MainPageAction(){
             onClick = {
                 PowerStation.destoryPowerStation()
             },
-            content = { Text(stringResource(R.string.destory_power_station)) }
+            content = { Text(stringResource(R.string.destroy_power_station)) }
+        )
+        Button(
+            modifier = Modifier.padding(8.dp),
+            onClick = {
+                if (Wallet.values[CRYPTO].value < 200) toast(stringRes(R.string.no_item))
+                else {
+                    Wallet.values[CRYPTO].value -= 200
+                    RealEstate.values[AGRICULTURAL_LAND].value++
+                }
+            },
+            content = { Text(stringResource(R.string.buy_agriculture_land)) }
         )
     }
 }

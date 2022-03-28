@@ -2,27 +2,34 @@
     <string name="app_name">EarnMoneySimulator</string>
 
     <string-array name="plan">
-        <item>study</item>
-        <item>mining</item>
+        <item>Study</item>
+        <item>Work</item>
+        <item>Mining</item>
+        <item>Farming</item>
     </string-array>
 
     <string-array name="wallet">
         <item>Crypto</item>
         <item>Electricity</item>
         <item>Fossil</item>
-        <item>Precious metal</item>
-        <item>Basic metal</item>
-        <item>Light metal</item>
+        <item>Precious Metal</item>
+        <item>Basic Metal</item>
+        <item>Light Metal</item>
     </string-array>
 
-    <string name="power_station">power station</string>
+    <string-array name="real_estate">
+        <item>Agricultural Land</item>
+    </string-array>
+
+    <string name="power_station">Power Station</string>
 
     <!--action-->
-    <string name="build_aircraft_carrier">build aircraft carrier</string>
-    <string name="build_rocket">build rocket</string>
-    <string name="build_dyson_sphere">build dyson sphere</string>
-    <string name="build_power_station">build power station</string>
-    <string name="destory_power_station">destory power station</string>
+    <string name="build_aircraft_carrier">Build aircraft carrier</string>
+    <string name="build_rocket">Build rocket</string>
+    <string name="build_dyson_sphere">Build dyson sphere</string>
+    <string name="build_power_station">Build power station</string>
+    <string name="destroy_power_station">Destroy power station</string>
+    <string name="buy_agriculture_land">Buy Agriculture Land</string>
 
     <string-array name="skill">
         <item>Semiotics</item>
@@ -33,6 +40,10 @@
         <item>Social Image</item>
     </string-array>
 
+    <string-array name="agriculture">
+        <item>Wheat</item>
+    </string-array>
+
     <!--error-->
-    <string name="no_item">you have not this item</string>
+    <string name="no_item">you have not this item enough</string>
 </resources>

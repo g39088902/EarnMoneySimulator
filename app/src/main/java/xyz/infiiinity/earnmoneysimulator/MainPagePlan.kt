@@ -23,7 +23,9 @@ fun MainPageStudy(){
                 colors = if(i == Plan.select.value) ButtonDefaults.buttonColors(backgroundColor = Color.Green)
                 else ButtonDefaults.buttonColors(backgroundColor = Color.Red),
                 content = { Text(stringRes(R.array.plan,i)) },
-                onClick = { Plan.select.value = i }
+                onClick = {
+                    with(Plan.select){ value = if (value == i) -1 else i }
+                }
             )
         }
 

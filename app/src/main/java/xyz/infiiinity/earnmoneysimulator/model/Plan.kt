@@ -20,5 +20,7 @@ object Plan {
     }
 
     const val STUDY = 0
-    const val MINING = 1
+    const val WORK = 1
+    const val MINING = 2
+    const val FARMING = 3
 }

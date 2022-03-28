@@ -20,12 +20,10 @@ import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.HorizontalPagerIndicator
 import com.google.accompanist.pager.rememberPagerState
 import com.tencent.mmkv.MMKV
+import xyz.infiiinity.earnmoneysimulator.model.*
 import xyz.infiiinity.earnmoneysimulator.ui.theme.EarnMoneySimulatorTheme
 import xyz.infiiinity.earnmoneysimulator.utils.Resource.stringRes
 import xyz.infiiinity.earnmoneysimulator.utils.Time.timeHook
-import xyz.infiiinity.earnmoneysimulator.model.PowerStation
-import xyz.infiiinity.earnmoneysimulator.model.Skill
-import xyz.infiiinity.earnmoneysimulator.model.Wallet
 
 class MainActivity : ComponentActivity() {
 
@@ -60,6 +58,12 @@ fun Main() {
                     text = stringRes(R.array.wallet, i) + "${values[i].value}"
                 )
             }
+            with(RealEstate) {
+                for (i in 0 .. lastIndex) if (values[i].value > 0) Text(
+                    modifier = Modifier.padding(8.dp),
+                    text = stringRes(resId, i) + "${values[i].value}"
+                )
+            }
             if (PowerStation.powerStation.value > 0) Text(
                 modifier = Modifier.padding(8.dp),
                 text = stringResource(R.string.power_station) + "${PowerStation.powerStation.value}"
@@ -68,6 +72,12 @@ fun Main() {
                 for (i in 0 .. lastIndex) if (values[i].value > 0) Text(
                     modifier = Modifier.padding(8.dp),
                     text = stringRes(R.array.skill, i) + "${values[i].value}"
+                )
+            }
+            with(Agriculture) {
+                for (i in 0 .. lastIndex) if (values[i].value > 0) Text(
+                    modifier = Modifier.padding(8.dp),
+                    text = stringRes(R.array.agriculture, i) + "${values[i].value}"
                 )
             }
         }
