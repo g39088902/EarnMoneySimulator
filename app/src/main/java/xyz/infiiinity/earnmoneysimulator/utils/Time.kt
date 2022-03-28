@@ -14,10 +14,10 @@ object Time {
         while (isActive) {
             delay(timeUnit)
             Wallet.doEachSecond()
-            RealEstate.doEachSecond()
             Plan.doEachSecond()
             Skill.doEachSecond()
-            Agriculture.doEachSecond()
+            RealEstate.doEachSecond()
+            for(factory in RealEstate.factoryList) factory.doEachSecond()
             if (i % MINUTE == 1) {
                 Wallet.doEachMinute()
                 PowerStation.doEachMinute()

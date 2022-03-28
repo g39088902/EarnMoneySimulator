@@ -2,6 +2,7 @@ package xyz.infiiinity.earnmoneysimulator
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Button
 import androidx.compose.material.Text
@@ -10,10 +11,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import xyz.infiiinity.earnmoneysimulator.model.PowerStation
-import xyz.infiiinity.earnmoneysimulator.model.RealEstate
+import xyz.infiiinity.earnmoneysimulator.model.*
 import xyz.infiiinity.earnmoneysimulator.model.RealEstate.AGRICULTURAL_LAND
-import xyz.infiiinity.earnmoneysimulator.model.Wallet
+import xyz.infiiinity.earnmoneysimulator.model.RealEstate.factoryList
 import xyz.infiiinity.earnmoneysimulator.model.Wallet.CRYPTO
 import xyz.infiiinity.earnmoneysimulator.utils.Resource.stringRes
 import xyz.infiiinity.earnmoneysimulator.utils.Tips
@@ -43,30 +43,19 @@ fun MainPageAction() {
             },
             content = { Text(stringResource(R.string.build_dyson_sphere)) }
         )
-        Button(
-            modifier = Modifier.padding(8.dp),
-            onClick = {
-                PowerStation.buildPowerStation()
-            },
-            content = { Text(stringResource(R.string.build_power_station)) }
-        )
-        Button(
-            modifier = Modifier.padding(8.dp),
-            onClick = {
-                PowerStation.destoryPowerStation()
-            },
-            content = { Text(stringResource(R.string.destroy_power_station)) }
-        )
-        Button(
-            modifier = Modifier.padding(8.dp),
-            onClick = {
-                if (Wallet.values[CRYPTO].value < 200) toast(stringRes(R.string.no_item))
-                else {
-                    Wallet.values[CRYPTO].value -= 200
-                    RealEstate.values[AGRICULTURAL_LAND].value++
-                }
-            },
-            content = { Text(stringResource(R.string.buy_agriculture_land)) }
-        )
+        for((i,factory) in factoryList.withIndex()){
+            Row{
+                Button(
+                    modifier = Modifier.padding(8.dp),
+                    onClick = { factory.buy() },
+                    content = { Text( stringRes(R.string.buy)+ stringRes(R.array.real_estate,i)) }
+                )
+                Button(
+                    modifier = Modifier.padding(8.dp),
+                    onClick = { factory.sell() },
+                    content = { Text( stringRes(R.string.sell)+ stringRes(R.array.real_estate,i)) }
+                )
+            }
+        }
     }
 }

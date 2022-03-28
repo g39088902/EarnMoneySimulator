@@ -12,7 +12,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.google.accompanist.pager.ExperimentalPagerApi
@@ -58,28 +57,28 @@ fun Main() {
                     text = stringRes(R.array.wallet, i) + "${values[i].value}"
                 )
             }
-            with(RealEstate) {
-                for (i in 0 .. lastIndex) if (values[i].value > 0) Text(
-                    modifier = Modifier.padding(8.dp),
-                    text = stringRes(resId, i) + "${values[i].value}"
-                )
-            }
-            if (PowerStation.powerStation.value > 0) Text(
-                modifier = Modifier.padding(8.dp),
-                text = stringResource(R.string.power_station) + "${PowerStation.powerStation.value}"
-            )
+
             with(Skill) {
                 for (i in 0 .. lastIndex) if (values[i].value > 0) Text(
                     modifier = Modifier.padding(8.dp),
                     text = stringRes(R.array.skill, i) + "${values[i].value}"
                 )
             }
-            with(Agriculture) {
-                for (i in 0 .. lastIndex) if (values[i].value > 0) Text(
-                    modifier = Modifier.padding(8.dp),
-                    text = stringRes(R.array.agriculture, i) + "${values[i].value}"
-                )
+            with(RealEstate) {
+                for (i in 0 .. lastIndex) {
+                    if (values[i].value > 0) Text(
+                        modifier = Modifier.padding(8.dp),
+                        text = stringRes(resId, i) + "${values[i].value}"
+                    )
+                    for(j in 0..factoryList[i].lastIndex){
+                        if (factoryList[i].values[j].value > 0) Text(
+                            modifier = Modifier.padding(8.dp),
+                            text = stringRes(factoryList[i].resId, j) + "${factoryList[i].values[j].value}"
+                        )
+                    }
+                }
             }
+
         }
         Column(
             modifier = Modifier
@@ -102,8 +101,8 @@ fun Main() {
             }
             Row(
                 modifier = Modifier
-                .fillMaxSize()
-                .background(Color.LightGray),
+                    .fillMaxSize()
+                    .background(Color.LightGray),
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.Center
             ) {

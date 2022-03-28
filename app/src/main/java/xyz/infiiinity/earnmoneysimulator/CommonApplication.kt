@@ -23,7 +23,6 @@ class CommonApplication: Application(){
         RealEstate.load()
         Plan.load()
         Skill.load()
-        PowerStation.load()
-        Agriculture.load()
+        AgricultureLand.load()
     }
 }
