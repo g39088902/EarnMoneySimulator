@@ -21,6 +21,7 @@ object Time {
             if (i % MINUTE == 1) {
                 Wallet.doEachMinute()
                 PowerStation.doEachMinute()
+                Shop.doEachMinute()
             }
             if (i % HOUR == 2) {
                 WaifuSocket.nextWaifu()

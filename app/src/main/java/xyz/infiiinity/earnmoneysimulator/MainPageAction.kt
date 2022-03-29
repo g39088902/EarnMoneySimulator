@@ -25,24 +25,6 @@ fun MainPageAction() {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
     ) {
-        Button(
-            modifier = Modifier.padding(8.dp),
-            onClick = { Wallet.values[4].value -= 10 },
-            content = { Text(stringResource(R.string.build_aircraft_carrier)) }
-        )
-        Button(
-            modifier = Modifier.padding(8.dp),
-            onClick = { Wallet.values[5].value -= 30 },
-            content = { Text(stringResource(R.string.build_rocket)) }
-        )
-        Button(
-            modifier = Modifier.padding(8.dp),
-            onClick = {
-                Wallet.values[4].value -= 100
-                Wallet.values[3].value -= 20
-            },
-            content = { Text(stringResource(R.string.build_dyson_sphere)) }
-        )
         for((i,factory) in factoryList.withIndex()){
             Row{
                 Button(

@@ -20,9 +20,11 @@ class CommonApplication: Application(){
         super.onCreate()
         context = this
         Wallet.load()
-        RealEstate.load()
         Plan.load()
         Skill.load()
+        RealEstate.load()
         AgricultureLand.load()
+        MiningLand.load()
+        PowerStation.load()
     }
 }

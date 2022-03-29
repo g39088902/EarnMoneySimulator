@@ -16,7 +16,7 @@ object PowerStation : BaseFactory(R.array.power_station)  {
         val generateAbility = 1 * RealEstate.values[POWER_STATION].value
         val generateActual = min(generateAbility, max(MiningLand.values[FOSSIL].value, 0))
         MiningLand.values[FOSSIL].value -= generateActual
-        Wallet.values[ELECTRICITY].value += generateActual
+        values[ELECTRICITY].value += generateActual
     }
 
     override fun buy() {

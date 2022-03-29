@@ -31,6 +31,8 @@
         <item>Agricultural Land</item>
         <item>Mining Land</item>
         <item>Power Station</item>
+        <item>Residential</item>
+        <item>Shop</item>
     </string-array>
 
     <string-array name="power_station">
@@ -46,6 +48,12 @@
 
     <string-array name="agriculture">
         <item>Wheat</item>
+    </string-array>
+
+    <string-array name="residential">
+    </string-array>
+
+    <string-array name="shop">
     </string-array>
 
     <!--action-->

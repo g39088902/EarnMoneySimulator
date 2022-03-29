@@ -31,6 +31,8 @@
         <item>农业用地</item>
         <item>矿业用地</item>
         <item>发电站</item>
+        <item>住宅</item>
+        <item>商铺</item>
     </string-array>
 
     <string-array name="power_station">
@@ -46,6 +48,12 @@
 
     <string-array name="agriculture">
         <item>小麦</item>
+    </string-array>
+
+    <string-array name="residential">
+    </string-array>
+
+    <string-array name="shop">
     </string-array>
 
     <!--action-->
