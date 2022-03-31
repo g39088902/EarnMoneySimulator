@@ -7,6 +7,11 @@
     <string name="buy">Buy</string>
     <string name="sell">Sell</string>
 
+    <string-array name="time">
+        <item>Game Time</item>
+        <item>Charter Age</item>
+    </string-array>
+
     <string-array name="plan">
         <item>Study</item>
         <item>Work</item>

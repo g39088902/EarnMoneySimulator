@@ -7,6 +7,11 @@
     <string name="buy">买</string>
     <string name="sell">卖</string>
 
+    <string-array name="time">
+        <item>游戏时间</item>
+        <item>角色年龄</item>
+    </string-array>
+
     <string-array name="plan">
         <item>学习</item>
         <item>上班</item>

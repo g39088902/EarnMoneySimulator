@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.Context
 import com.tencent.mmkv.MMKV
 import xyz.infiiinity.earnmoneysimulator.model.*
+import xyz.infiiinity.earnmoneysimulator.utils.Time
 import kotlin.properties.Delegates
 
 class CommonApplication: Application(){
@@ -19,6 +20,7 @@ class CommonApplication: Application(){
     override fun onCreate() {
         super.onCreate()
         context = this
+        Time.load()
         Wallet.load()
         Plan.load()
         Skill.load()

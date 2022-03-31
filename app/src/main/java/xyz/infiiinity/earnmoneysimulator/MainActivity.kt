@@ -22,6 +22,7 @@ import com.tencent.mmkv.MMKV
 import xyz.infiiinity.earnmoneysimulator.model.*
 import xyz.infiiinity.earnmoneysimulator.ui.theme.EarnMoneySimulatorTheme
 import xyz.infiiinity.earnmoneysimulator.utils.Resource.stringRes
+import xyz.infiiinity.earnmoneysimulator.utils.Time
 import xyz.infiiinity.earnmoneysimulator.utils.Time.timeHook
 
 class MainActivity : ComponentActivity() {
@@ -51,6 +52,12 @@ fun Main() {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
+            with(Time) {
+                for (i in 0 .. lastIndex) if (values[i].value > 0) Text(
+                    modifier = Modifier.padding(8.dp),
+                    text = stringRes(R.array.time, i) + "${values[i].value}"
+                )
+            }
             with(Wallet) {
                 for (i in 0 .. lastIndex) if (values[i].value > 0) Text(
                     modifier = Modifier.padding(8.dp),
