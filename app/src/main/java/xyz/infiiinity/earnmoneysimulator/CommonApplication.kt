@@ -28,5 +28,6 @@ class CommonApplication: Application(){
         AgricultureLand.load()
         MiningLand.load()
         PowerStation.load()
+        Time.timeHook.start()
     }
 }

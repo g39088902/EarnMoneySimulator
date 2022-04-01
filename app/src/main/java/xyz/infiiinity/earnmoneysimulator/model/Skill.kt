@@ -9,4 +9,9 @@ object Skill : BaseModel(R.array.skill) {
         super.doEachSecond()
     }
 
+    fun clear(){
+        for (ability in values)ability.value = 0
+        super.doEachSecond()
+    }
+
 }

@@ -29,7 +29,6 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        MMKV.initialize(this)
         setContent {
             EarnMoneySimulatorTheme {
                 Surface(color = MaterialTheme.colors.background) {
@@ -37,7 +36,6 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
-        timeHook.start()
     }
 }
 
@@ -53,7 +51,7 @@ fun Main() {
             verticalArrangement = Arrangement.Center
         ) {
             with(Time) {
-                for (i in 0 .. lastIndex) if (values[i].value > 0) Text(
+                for (i in 0 .. lastIndex) Text(
                     modifier = Modifier.padding(8.dp),
                     text = stringRes(R.array.time, i) + "${values[i].value}"
                 )

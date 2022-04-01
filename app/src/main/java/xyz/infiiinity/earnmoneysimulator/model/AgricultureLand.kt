@@ -3,6 +3,7 @@ package xyz.infiiinity.earnmoneysimulator.model
 import xyz.infiiinity.earnmoneysimulator.R
 import xyz.infiiinity.earnmoneysimulator.utils.Resource
 import xyz.infiiinity.earnmoneysimulator.utils.Tips
+import xyz.infiiinity.earnmoneysimulator.utils.Tips.toast
 
 object AgricultureLand : BaseFactory(R.array.agriculture) {
 
@@ -14,7 +15,7 @@ object AgricultureLand : BaseFactory(R.array.agriculture) {
     }
 
     override fun buy() {
-        if (Wallet.values[Wallet.CRYPTO].value < 200) Tips.toast(Resource.stringRes(R.string.no_item))
+        if (Wallet.values[Wallet.CRYPTO].value < 200) toast(Resource.stringRes(R.string.no_item))
         else {
             Wallet.values[Wallet.CRYPTO].value -= 200
             RealEstate.values[RealEstate.AGRICULTURAL_LAND].value++
@@ -22,7 +23,7 @@ object AgricultureLand : BaseFactory(R.array.agriculture) {
     }
 
     override fun sell() {
-        if (RealEstate.values[RealEstate.AGRICULTURAL_LAND].value <= 0) Tips.toast(Resource.stringRes(R.string.no_item))
+        if (RealEstate.values[RealEstate.AGRICULTURAL_LAND].value <= 0) toast(Resource.stringRes(R.string.no_item))
         else {
             RealEstate.values[RealEstate.AGRICULTURAL_LAND].value--
             Wallet.values[Wallet.CRYPTO].value += 200

@@ -5,6 +5,7 @@ import xyz.infiiinity.earnmoneysimulator.R
 import xyz.infiiinity.earnmoneysimulator.api.WaifuSocket
 import xyz.infiiinity.earnmoneysimulator.model.*
 import xyz.infiiinity.earnmoneysimulator.utils.MMKV.kv
+import xyz.infiiinity.earnmoneysimulator.utils.Tips.toast
 
 object Time : BaseModel(R.array.time) {
     val timeUnit = 50L
@@ -21,13 +22,19 @@ object Time : BaseModel(R.array.time) {
         super.doEachSecond()
     }
 
-    fun doEachHour(){
-        values[CHARTER_AGE].value++
+    fun doEachHour() {
+        with(values[CHARTER_AGE]) {
+            val timeToDie = (0..value).random() > 50
+            if (timeToDie) {
+                Skill.clear()
+                value = 0
+                toast("你死了，你的孩子继承了你的财产")
+            } else value++
+        }
         super.doEachSecond()
     }
 
     val timeHook = CoroutineScope(Dispatchers.Default).launch(start = CoroutineStart.LAZY) {
-        var i = 0
         while (isActive) {
             delay(timeUnit)
             doEachSecond()
@@ -36,16 +43,15 @@ object Time : BaseModel(R.array.time) {
             Skill.doEachSecond()
             RealEstate.doEachSecond()
             for (factory in RealEstate.factoryList) factory.doEachSecond()
-            if (i % MINUTE == MINUTE - 1) {
+            if (values[GAME_TIME].value % MINUTE == MINUTE - 1) {
                 Wallet.doEachMinute()
                 PowerStation.doEachMinute()
                 Shop.doEachMinute()
             }
-            if (i % HOUR == HOUR - 2) {
+            if (values[GAME_TIME].value % HOUR == HOUR - 2) {
                 doEachHour()
                 WaifuSocket.nextWaifu()
             }
-            i++
         }
     }
 }
