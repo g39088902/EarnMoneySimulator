@@ -9,9 +9,9 @@ object Wallet : BaseModel(R.array.wallet) {
 
     const val CRYPTO = 0
 
-    fun doEachMinute() {
+    override fun doEachSecond() {
         if(Plan.select.value==WORK)values[CRYPTO].value += Skill.values.maxOf { it.value }
-        kv.encode("$name$CRYPTO", values[CRYPTO].value)
+        super.doEachSecond()
     }
 
 }

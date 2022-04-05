@@ -3,6 +3,7 @@ package xyz.infiiinity.earnmoneysimulator
 import android.app.Application
 import android.content.Context
 import com.tencent.mmkv.MMKV
+import xyz.infiiinity.earnmoneysimulator.api.WaifuSocket
 import xyz.infiiinity.earnmoneysimulator.model.*
 import xyz.infiiinity.earnmoneysimulator.utils.Time
 import kotlin.properties.Delegates
@@ -28,6 +29,7 @@ class CommonApplication: Application(){
         AgricultureLand.load()
         MiningLand.load()
         PowerStation.load()
+        WaifuSocket.load()
         Time.timeHook.start()
     }
 }
