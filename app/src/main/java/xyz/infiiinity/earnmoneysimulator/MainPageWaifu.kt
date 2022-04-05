@@ -1,8 +1,10 @@
 package xyz.infiiinity.earnmoneysimulator
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -12,17 +14,19 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.unit.dp
 import xyz.infiiinity.earnmoneysimulator.api.WaifuSocket
+import xyz.infiiinity.earnmoneysimulator.model.Wallet
+import xyz.infiiinity.earnmoneysimulator.model.Wallet.CRYPTO
+import xyz.infiiinity.earnmoneysimulator.utils.Resource.stringRes
+import xyz.infiiinity.earnmoneysimulator.utils.Tips.toast
 
 @Composable
 fun MainPageWaifu(){
+    val scrollState = ScrollState(0)
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Top,
+        modifier = Modifier.fillMaxHeight().verticalScroll(scrollState)
     ) {
-        Button(
-            onClick = { WaifuSocket.nextWaifu() },
-            content = { Text("获得新Waifu") }
-        )
         for(waifu in WaifuSocket.waifuList){
             Row(
                 modifier = Modifier.height(80.dp)
@@ -43,8 +47,15 @@ fun MainPageWaifu(){
                     content = { Text("删除") }
                 )
             }
-
         }
-
+        Button(
+            onClick = {
+                if (Wallet.values[CRYPTO].value>10000){
+                    Wallet.values[CRYPTO].value-=10000
+                    WaifuSocket.nextWaifu()
+                }else toast(stringRes(R.string.no_item))
+            },
+            content = { Text("获得新Waifu(一万块)") }
+        )
     }
 }

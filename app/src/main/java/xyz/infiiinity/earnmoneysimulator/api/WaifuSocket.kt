@@ -33,7 +33,6 @@ object WaifuSocket {
             val generateUrl = "wss://waifulabs.com/creator/socket/websocket?token=$token&vsn=2.0.0"
             val generateRequest = Request.Builder().url(generateUrl).build()
             socket = okHttpClient.newWebSocket(generateRequest, listener)
-            socket.send("[\"1\",\"1\",\"api\",\"phx_join\",{}]")
         }
     }
 
@@ -43,6 +42,7 @@ object WaifuSocket {
     }
 
     fun nextWaifu(){
+        socket.send("[\"1\",\"1\",\"api\",\"phx_join\",{}]")
         socket.send("[\"1\",\"1\",\"api\",\"generate\",{\"id\":1,\"params\":{\"step\":0}}]")
     }
 

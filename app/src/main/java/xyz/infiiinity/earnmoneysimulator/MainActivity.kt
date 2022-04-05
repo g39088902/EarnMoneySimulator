@@ -18,12 +18,12 @@ import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.HorizontalPagerIndicator
 import com.google.accompanist.pager.rememberPagerState
-import com.tencent.mmkv.MMKV
-import xyz.infiiinity.earnmoneysimulator.model.*
+import xyz.infiiinity.earnmoneysimulator.model.RealEstate
+import xyz.infiiinity.earnmoneysimulator.model.Skill
+import xyz.infiiinity.earnmoneysimulator.model.Wallet
 import xyz.infiiinity.earnmoneysimulator.ui.theme.EarnMoneySimulatorTheme
 import xyz.infiiinity.earnmoneysimulator.utils.Resource.stringRes
 import xyz.infiiinity.earnmoneysimulator.utils.Time
-import xyz.infiiinity.earnmoneysimulator.utils.Time.timeHook
 
 class MainActivity : ComponentActivity() {
 
@@ -45,15 +45,19 @@ fun Main() {
     Row {
         Column(
             modifier = Modifier
-                .fillMaxWidth(0.3f)
+                .fillMaxWidth(0.4f)
                 .fillMaxHeight(),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
             with(Time) {
-                for (i in 0 .. lastIndex) Text(
+                Text(
                     modifier = Modifier.padding(8.dp),
-                    text = stringRes(R.array.time, i) + "${values[i].value}"
+                    text = "${gameYear.value}年${gameMouth.value}月${gameDay.value}日${gameHour.value}时${gameMinute.value}分${gameSecond.value}秒"
+                )
+                Text(
+                    modifier = Modifier.padding(8.dp),
+                    text = stringRes(R.array.time,1) + values[1].value
                 )
             }
             with(Wallet) {
