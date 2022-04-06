@@ -6,6 +6,8 @@
 
     <string name="buy">买</string>
     <string name="sell">卖</string>
+    <string name="lock">锁定</string>
+    <string name="delete">删除</string>
 
     <string-array name="time">
         <item>游戏时间</item>
@@ -23,6 +25,10 @@
         <item>加密货币</item>
     </string-array>
 
+    <string-array name="employee">
+        <item>雇员</item>
+    </string-array>
+
     <string-array name="skill">
         <item>符号学</item>
         <item>政治学</item>
@@ -38,6 +44,7 @@
         <item>发电站</item>
         <item>住宅</item>
         <item>商铺</item>
+        <item>面包厂</item>
     </string-array>
 
     <string-array name="power_station">
@@ -59,6 +66,10 @@
     </string-array>
 
     <string-array name="shop">
+    </string-array>
+
+    <string-array name="bread_factory">
+        <item>面包</item>
     </string-array>
 
     <!--action-->

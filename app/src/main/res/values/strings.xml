@@ -6,6 +6,8 @@
 
     <string name="buy">Buy</string>
     <string name="sell">Sell</string>
+    <string name="lock">Lock</string>
+    <string name="delete">Delete</string>
 
     <string-array name="time">
         <item>Game Time</item>
@@ -23,6 +25,10 @@
         <item>Crypto</item>
     </string-array>
 
+    <string-array name="employee">
+        <item>Employee</item>
+    </string-array>
+
     <string-array name="skill">
         <item>Semiotics</item>
         <item>Politics</item>
@@ -38,6 +44,7 @@
         <item>Power Station</item>
         <item>Residential</item>
         <item>Shop</item>
+        <item>Bread Factory</item>
     </string-array>
 
     <string-array name="power_station">
@@ -59,6 +66,10 @@
     </string-array>
 
     <string-array name="shop">
+    </string-array>
+
+    <string-array name="bread_factory">
+        <item>Bread</item>
     </string-array>
 
     <!--action-->

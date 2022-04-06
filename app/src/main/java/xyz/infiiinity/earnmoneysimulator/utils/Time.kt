@@ -9,7 +9,7 @@ import xyz.infiiinity.earnmoneysimulator.utils.MMKV.kv
 import xyz.infiiinity.earnmoneysimulator.utils.Tips.toast
 
 object Time : BaseModel(R.array.time) {
-    val timeUnit = 50L
+    val timeUnit = 500L
     const val GAME_TIME = 0
     const val CHARTER_AGE = 1
     const val MINUTE = 10
@@ -81,6 +81,7 @@ object Time : BaseModel(R.array.time) {
                 doEachMinute()
                 PowerStation.doEachMinute()
                 Shop.doEachMinute()
+                BreadFactory.doEachMinute()
                 WaifuSocket.doEachMinute()
             }
             if (values[GAME_TIME].value % HOUR == 0) {

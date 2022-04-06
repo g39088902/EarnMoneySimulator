@@ -3,6 +3,7 @@ package xyz.infiiinity.earnmoneysimulator
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Button
@@ -21,11 +22,13 @@ import xyz.infiiinity.earnmoneysimulator.utils.Tips.toast
 
 @Composable
 fun MainPageWaifu(){
-    val scrollState = ScrollState(0)
+    val scrollState = rememberScrollState(0)
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Top,
-        modifier = Modifier.fillMaxHeight().verticalScroll(scrollState)
+        modifier = Modifier
+            .fillMaxHeight()
+            .verticalScroll(scrollState)
     ) {
         for(waifu in WaifuSocket.waifuList){
             Row(
@@ -40,11 +43,11 @@ fun MainPageWaifu(){
                 )
                 Button(
                     onClick = {  },
-                    content = { Text("锁定") }
+                    content = { Text(stringRes(R.string.lock)) }
                 )
                 Button(
                     onClick = { WaifuSocket.waifuList.remove(waifu) },
-                    content = { Text("删除") }
+                    content = { Text(stringRes(R.string.delete)) }
                 )
             }
         }

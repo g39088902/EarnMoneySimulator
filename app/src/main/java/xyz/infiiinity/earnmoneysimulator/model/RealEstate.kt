@@ -8,5 +8,6 @@ object RealEstate : BaseModel(R.array.real_estate) {
     const val POWER_STATION = 2
     const val RESIDENTIAL = 3
     const val SHOP = 4
-    val factoryList = listOf(AgricultureLand,MiningLand,PowerStation,Residential,Shop)
+    const val BREAD_FACTORY = 5
+    val factoryList = listOf(AgricultureLand,MiningLand,PowerStation,Residential,Shop,BreadFactory)
 }

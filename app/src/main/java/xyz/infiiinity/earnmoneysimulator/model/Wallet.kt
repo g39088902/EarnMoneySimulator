@@ -14,4 +14,6 @@ object Wallet : BaseModel(R.array.wallet) {
         super.doEachSecond()
     }
 
+    val propertyList = listOf(Wallet,Skill,Employee)
+
 }

@@ -21,6 +21,7 @@ import com.google.accompanist.pager.rememberPagerState
 import xyz.infiiinity.earnmoneysimulator.model.RealEstate
 import xyz.infiiinity.earnmoneysimulator.model.Skill
 import xyz.infiiinity.earnmoneysimulator.model.Wallet
+import xyz.infiiinity.earnmoneysimulator.model.Wallet.propertyList
 import xyz.infiiinity.earnmoneysimulator.ui.theme.EarnMoneySimulatorTheme
 import xyz.infiiinity.earnmoneysimulator.utils.Resource.stringRes
 import xyz.infiiinity.earnmoneysimulator.utils.Time
@@ -60,18 +61,13 @@ fun Main() {
                     text = stringRes(R.array.time,1) + values[1].value
                 )
             }
-            with(Wallet) {
-                for (i in 0 .. lastIndex) if (values[i].value > 0) Text(
-                    modifier = Modifier.padding(8.dp),
-                    text = stringRes(R.array.wallet, i) + "${values[i].value}"
-                )
-            }
-
-            with(Skill) {
-                for (i in 0 .. lastIndex) if (values[i].value > 0) Text(
-                    modifier = Modifier.padding(8.dp),
-                    text = stringRes(R.array.skill, i) + "${values[i].value}"
-                )
+            for ( property in propertyList ){
+                with(property) {
+                    for (i in 0 .. lastIndex) if (values[i].value > 0) Text(
+                        modifier = Modifier.padding(8.dp),
+                        text = stringRes(resId, i) + "${values[i].value}"
+                    )
+                }
             }
             with(RealEstate) {
                 for (i in 0 .. lastIndex) {
@@ -95,7 +91,7 @@ fun Main() {
         ) {
             val pagerState = rememberPagerState()
             HorizontalPager(
-                count = 3,
+                count = 4,
                 state = pagerState,
                 modifier = Modifier
                     .fillMaxWidth(1f)
@@ -106,6 +102,7 @@ fun Main() {
                     0 -> MainPageAction()
                     1 -> MainPageWaifu()
                     2 -> MainPageStudy()
+                    3 -> MainHire()
                 }
             }
             Row(
